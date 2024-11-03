@@ -1,0 +1,28 @@
+﻿@model IEnumerable<mvc_app.Models.Customer>
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<h2>Customers</h2>
+<table class="table table-striped">
+    <tr>
+        <th>Id</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Actions</th>
+    </tr>
+    @foreach (var customer in Model)
+    {
+        <tr>
+            <td>@customer.Id</td>
+            <td>@customer.FirstName</td>
+            <td>@customer.LastName</td>
+            <td>@customer.Email</td>
+            <td>
+                <a asp-action="Details" asp-route-id="@customer.Id" class="btn btn-info btn-sm">Details</a> |
+                <a asp-action="Edit" asp-route-id="@customer.Id" class="btn btn-warning btn-sm">Edit</a> |
+                <a asp-action="Delete" asp-route-id="@customer.Id" class="btn btn-danger btn-sm">Delete</a>
+            </td>
+        </tr>
+    }
+</table>
+<a asp-action="Create" class="btn btn-primary mb-3">Create New Customer</a>
